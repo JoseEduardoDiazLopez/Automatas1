@@ -22,19 +22,19 @@ Hacer |
 este |
 devolver |
 
-while {lexeme=yytext(); return Reservadas;}
+while {lexeme=yytext(); return Reservada;}
 {espacio} {/*Ignore*/}
 "//".* {/*Ignore*/}
-"EQU" {return Igual;}
-"MAS" {return Suma;} 
-"MENOS" {return Resta;}
-"POR" {return Multiplicacion;}
-"ENTRE" {return Division;}
-"Y" {return And;}
-"O" {return Or;}
-"DIF" {return DiferenteQue;}
-"MAY" {return MayorQue;}
-"MEN" {return MenorQue;}
+"EQU" {lexeme=yytext();return Igual;}
+"MAS" {lexeme=yytext();return Suma;} 
+"MENOS" {lexeme=yytext();return Resta;}
+"POR" {lexeme=yytext();return Multiplicacion;}
+"ENTRE" {lexeme=yytext();return Division;}
+"Y" {lexeme=yytext();return And;}
+"O" {lexeme=yytext();return Or;}
+"DIF" {lexeme=yytext();return DiferenteQue;}
+"MAY" {lexeme=yytext();return MayorQue;}
+"MEN" {lexeme=yytext();return MenorQue;}
 
 {L}({L}|{D})* {lexeme=yytext(); return Identificador;}
 ("(-"{D}+")")|{D}+ {lexeme=yytext(); return Numero;}

@@ -113,33 +113,37 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 }
                 switch (tokens){
                     case ERROR:
-                        resultado+=" simbolo no definido \n";
+                        resultado+=" Simbolo no definido \n";
                         break;
+                    
                     case Identificador: 
-                    case Igual:
-                    case And:
-                    case Or:
-                    case MayorQue:
-                    case MenorQue:
                     case Numero:
                         
-                    
-                        resultado+= lexer.lexeme + "Es un" + tokens+"\n";
+                        resultado+= lexer.lexeme + " Es un " + tokens+"\n";
                         break;
                         
-                        case Reservadas:
-                        resultado+= lexer.lexeme + " Es una de las palabras " + tokens+"\n";
+                        case Reservada:
+                        resultado+= lexer.lexeme + " Es una palabra " + tokens+"\n";
+                        
                         break;
                         
                          case Suma:
                          case Resta:
                          case Multiplicacion:
-                         case Division:    
+                         case Division:   //PUSH 
                         resultado+= lexer.lexeme + " Es una " + tokens+"\n";
+                        break;
+                        
+                    case And:
+                    case Or:
+                    case MayorQue:
+                    case MenorQue:
+                    case Igual:
+                        resultado+= lexer.lexeme + " Es un " + tokens+"\n";
                         break;
                     
                     default:
-                        resultado+="Token: "+tokens+"\n";
+                        resultado+=" Token: "+tokens+"\n";
                         break;
                 }
                     
