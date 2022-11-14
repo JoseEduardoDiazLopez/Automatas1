@@ -3,26 +3,55 @@ import static codigo.Tokens.*;
 %%
 %class Lexer
 %type Tokens
-L=[a-zA-Z_]+
+L=[A-Za-zÑñ_ÁÉÍÓÚáéíóúÜü]+
 D=[0-9]+
+S=[¡!]
 espacio=[ ,\t,\r,\n]+
 %{
     public String lexeme;
 %}
 %%
-NumCerrado |
-Decimal |
+
+BLANCO |
+GRISCLARO |
+GRIS |
+NEGRO |
+ROJO |
+ROSA |
+NARANJA |
+AMARILLO |
+VERDE |
+FUSCIA |
+AZULTURQ |
+AZUL 
+{lexeme=yytext(); return Constante;}
+
+C |
+CAD |
+SZ |
+Z |
+R |
+Q |
+D |
 VOF |
-Car |
 Cond |
 Conds |
 Mientras |
 Ciclar |
 Hacer |
-este |
-devolver |
-
-while {lexeme=yytext(); return Reservada;}
+Este |
+Devolver |
+CHANGE |
+v |
+f |
+ROMPER |
+PU |
+PR |
+PRO |
+nuevo |
+PAQUETE |
+OPCION
+{lexeme=yytext(); return Reservada;}
 {espacio} {/*Ignore*/}
 "//".* {/*Ignore*/}
 "EQU" {lexeme=yytext();return Igual;}
@@ -35,6 +64,14 @@ while {lexeme=yytext(); return Reservada;}
 "DIF" {lexeme=yytext();return DiferenteQue;}
 "MAY" {lexeme=yytext();return MayorQue;}
 "MEN" {lexeme=yytext();return MenorQue;}
+"MAS1" {lexeme=yytext();return Incremento;}
+"MEN1" {lexeme=yytext();return Decremento;}
+
+"¡¡" {lexeme=yytext();return DosPuntos;}
+"!!" {lexeme=yytext();return fin_de_sentencia;}
+
+"<(" {lexeme=yytext();return Abrir_Bloque_De_Instruccion;}
+")>" {lexeme=yytext();return Cerrar_Bloque_De_Instruccion;}
 
 {L}({L}|{D})* {lexeme=yytext(); return Identificador;}
 ("(-"{D}+")")|{D}+ {lexeme=yytext(); return Numero;}

@@ -11,6 +11,8 @@ package codigo;
  *////
 public enum Tokens {
     Reservada,
+    Constante,
+    operador_aritmatrico,
     Igual,
     Suma,
     Resta,
@@ -21,6 +23,12 @@ public enum Tokens {
     DiferenteQue,
     MayorQue,
     MenorQue,
+    DosPuntos,
+    fin_de_sentencia,
+    Incremento,
+    Decremento,
+    Abrir_Bloque_De_Instruccion,
+    Cerrar_Bloque_De_Instruccion,
     Identificador,
     Numero,
     ERROR
