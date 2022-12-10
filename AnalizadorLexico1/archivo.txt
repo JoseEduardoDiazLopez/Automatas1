@@ -1,3 +1,0 @@
-Z numero EQU 12!!
-Z numero2 EQU 5!!
-Z resul EQU numero MAS numero2!!
